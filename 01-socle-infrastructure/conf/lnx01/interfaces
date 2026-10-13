@@ -1,0 +1,17 @@
+# État final de /etc/network/interfaces sur LNX01 (Debian 13, ifupdown)
+# La carte NAT (ens37) n'est volontairement pas configurée ici :
+# l'accès Internet n'est ouvert qu'à la main, le temps des installations.
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug ens33
+iface ens33 inet static
+        address 192.168.10.13/24
+        gateway 192.168.10.2
+        # dns-* options are implemented by the resolvconf package, if installed
+        dns-nameservers 192.168.10.10
